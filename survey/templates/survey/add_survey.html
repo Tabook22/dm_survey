@@ -1,7 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 <div style="margin-top:60px;">
-  <h1>بسم الله الرحمن الرحيم</h1>  
-</div>
+{% comment %} 
+{% if object.srorg !=None and object.srorg !=''%} {{ object.srorg }} {% else %} The orgnaizer of this Survey is not yet determined {% endcomment %}
 
+{% comment %} {% if srorg !=None and object.srorg !=''%} {{ srorg }} {% else %} The orgnaizer of this Survey is not yet determined {% endcomment %}
+<h1>بسم الله الرحمن الرحيم</h1>  
+</div>
+<hr>
+{{msg}}
+
+<form>
+{{ form.as_p }}
+<input type='submit' value='Save' />
+</form>
 {% endblock content %}
+

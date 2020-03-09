@@ -4,5 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 class Main_Sr_Form(forms.ModelForm):
     class Meta:
-        modle=MainSr
-        exclude=('id','sr_emp' ,'sr_org',)
+        model=MainSr
+        exclude=('id','sr_emp',)
+        #widgets= ({'sr_org':'form-control', 'placeholder':'الجهة المنظمة للمسح الميداني', 'aria-label':'Orgnizer', 'aria-describedby':'add-orgnizer'})
+        
