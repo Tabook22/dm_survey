@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'survey',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,7 +139,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
 
-#Update Database Configuration in settings.py (at the bottom of the file)
-#import dj_database_url 
+# Update Database Configuration in settings.py (at the bottom of the file)
+#import dj_database_url
 #prod_db  =  dj_database_url.config(conn_max_age=500)
-#DATABASES['default'].update(prod_db)
+# DATABASES['default'].update(prod_db)

@@ -1,0 +1,34 @@
+.form-wrapper {
+  margin-top: 100px;
+}
+
+.row-rt {
+  color: red;
+  font-weight: bold;
+  text-align: left;
+  background-color: green;
+  height: 100px;
+}
+
+.textinput {
+  text-align: right;
+}
+
+.numberinput {
+  max-width: 100px;
+  text-align: center;
+}
+
+.nullbooleanselect {
+  max-width: 100px;
+  text-align: center;
+}
+
+.filed-wrapper {
+  display: flex;
+  justify-content: right;
+}
+
+.row-wrapper {
+  justify-content: right;
+}

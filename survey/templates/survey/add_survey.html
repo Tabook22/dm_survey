@@ -1,18 +1,58 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
 {% block content %}
-<div style="margin-top:60px;">
+{% load static %}
+<link href="{% static 'survey/css/add_form.css' %}" rel="stylesheet">
+<div class="form-wrapper">
 {% comment %} 
 {% if object.srorg !=None and object.srorg !=''%} {{ object.srorg }} {% else %} The orgnaizer of this Survey is not yet determined {% endcomment %}
 
 {% comment %} {% if srorg !=None and object.srorg !=''%} {{ srorg }} {% else %} The orgnaizer of this Survey is not yet determined {% endcomment %}
 <h1>بسم الله الرحمن الرحيم</h1>  
-</div>
+
 <hr>
 {{msg}}
-
+{% comment %} 
 <form>
-{{ form.as_p }}
+{% csrf_token %}
+{{ form|crispy }}
 <input type='submit' value='Save' />
-</form>
+</form> {% endcomment %}
+
+  <form method="post">
+    {% csrf_token %}
+   <div class="form-row row-wrapper">
+      <div class="form-group col-md-6 mb-0 text-right">
+        {{ form.sr_org|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6 mb-0 text-right">
+        {{ form.sr_loc|as_crispy_field }}
+      </div>
+    </div>
+    <div class="form-row row-wrapper">
+    <div class="form-group col-md-12 mb-0 text-right">
+    {{ form.sr_ser|as_crispy_field }}
+    </div>
+    </div>
+    <div class="form-row row-wrapper">
+     <div class="form-group col-md-2 mb-0 text-right">
+        <div class="field-wrapper text-right">
+        {{ form.sr_order|as_crispy_field }}
+        </div>
+        </div>
+      <div class="form-group col-md-2 mb-0 text-right">
+        <div class="filed-wrapper text-right">
+        {{ form.sr_status|as_crispy_field }}
+        </div>
+      </div>
+    </div>
+     <div class="form-row row-wrapper">
+    <button type="submit" class="btn btn-primary" style="width:200px;">إضافة</button>
+    </div>
+  </form>
+
+
+</div>
 {% endblock content %}
 

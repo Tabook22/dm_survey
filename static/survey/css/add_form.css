@@ -1,0 +1,9 @@
+.form-wrapper {
+  margin-top: 100px;
+}
+
+.row-rt {
+  color: red;
+  font-weight: bold;
+  flex-direction: row-reverse;
+}
