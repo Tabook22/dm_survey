@@ -45,15 +45,19 @@
   </style>
   <!-- Custom styles for this template -->
   <link href="starter-template.css" rel="stylesheet">
+  <link href="{% static 'dm/css/style.css' %}" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top flex-row-reverse">
     <a class="navbar-brand" href="#"><img src="{% static 'dm/img/dm_logo.png' %}" alt="DM Logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
       aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="site-title">
+    <h1>المسح الميداني</h1>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto text-center">

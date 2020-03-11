@@ -30,6 +30,14 @@ class MainSr(models.Model):
         return self.sr_ser
 
 
+class Main_Sr_Qys(models.Model):
+    mid = models.ForeignKey(MainSr, on_delete=models.CASCADE)
+    cho_1 = models.BooleanField("مرضي", default=False)
+    cho_2 = models.BooleanField("مرضي نوعاً ما", default=False)
+    cho_3 = models.BooleanField("غير مرضي", default=False)
+    cho_4 = models.BooleanField("لا أعلم", default=False)
+
+
 class Main_Sr_Comm(models.Model):
     mid = models.ForeignKey(MainSr, on_delete=models.CASCADE)
     sr_sgg = models.TextField(

@@ -9,10 +9,13 @@
 {% if object.srorg !=None and object.srorg !=''%} {{ object.srorg }} {% else %} The orgnaizer of this Survey is not yet determined {% endcomment %}
 
 {% comment %} {% if srorg !=None and object.srorg !=''%} {{ srorg }} {% else %} The orgnaizer of this Survey is not yet determined {% endcomment %}
-<h1>بسم الله الرحمن الرحيم</h1>  
+<div style="background-color:#c1c1c1; padding-right:20px; padding-top:10px;display:flex; justify-content:right; font-weight:bold;font-size:1.2rem;text-align:right">
+<p>
+أستمارة المسح الميداني</br>المعلومات الأساسية للمسح
+</p>
+</div> 
 
 <hr>
-{{msg}}
 {% comment %} 
 <form>
 {% csrf_token %}
@@ -20,7 +23,7 @@
 <input type='submit' value='Save' />
 </form> {% endcomment %}
 
-  <form method="post">
+  <form method="post" action="/survey/add_survey/" >
     {% csrf_token %}
    <div class="form-row row-wrapper">
       <div class="form-group col-md-6 mb-0 text-right">
@@ -51,8 +54,6 @@
     <button type="submit" class="btn btn-primary" style="width:200px;">إضافة</button>
     </div>
   </form>
-
-
 </div>
 {% endblock content %}
 
