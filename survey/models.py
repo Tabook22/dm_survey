@@ -14,10 +14,6 @@ class MainSr(models.Model):
         verbose_name="الجهة المنفذة للخدمة", max_length=255, null=True, blank=True)
     sr_ser = models.CharField(
         verbose_name="نوع الخدمة المقدمة", max_length=255, null=True, blank=True)
-    cho_1 = models.BooleanField("مرضي", default=False)
-    cho_2 = models.BooleanField("مرضي نوعاً ما", default=False)
-    cho_3 = models.BooleanField("غير مرضي", default=False)
-    cho_4 = models.BooleanField("لا أعلم", default=False)
     sr_order = models.IntegerField(
         verbose_name="ترتيب السؤال", null=True, blank=True)
     sr_status = models.BooleanField(

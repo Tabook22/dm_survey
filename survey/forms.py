@@ -12,7 +12,7 @@ class Main_Sr_Form(forms.ModelForm):
         super(Main_Sr_Form, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_method = 'post'
-        #self.helper.form_action = reverse('peertotur:peertotur_experties')
+        #self.helper.form_action = reverse('survey:survey_list')
         # self.helper.layout = Layout(
         #     Row(
         #         Column('sr_org', css_class='form-group col-md-12 mb-0'),
@@ -45,5 +45,5 @@ class Main_Sr_Form(forms.ModelForm):
             'sr_loc',
             'sr_ser',
             'sr_status',
-            'sr_order'
+            'sr_order',
         ]
