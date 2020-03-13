@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'survey',
     'crispy_forms',
+    'sr_user',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -137,6 +138,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # MEDIA
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
+
+#When user clicks on the submit button, the login view handles the login for us. 
+# After the user has logged in, we can define where the page should be redirected 
+# by specifying LOGIN_REDIRECT_URL in src/settings.py. By default, we will be 
+# redirected to /login if the login fails.
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+#LOGIN_URL='sr_user/login'
+
 
 
 # Update Database Configuration in settings.py (at the bottom of the file)

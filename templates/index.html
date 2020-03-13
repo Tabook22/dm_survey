@@ -1,7 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
-<div style="margin-top:60px;">
-  <h1>بسم الله الرحمن الرحيم</h1>  
+<div class="row" style="margin-top:160px; display:flex;flex-direction:row;justify-content:center;justify-items:center;">
+  
+  <div class="col-6-m"><h3>بسم الله الرحمن الرحيم</h3>  
+    <p>
+   برنامج المسح الميداني الرجاـد تسجيل الدخول
+    </p></div>
+  <div class="col-6-m" style="display:flex; flex-direction:column;justify-content:center;justify-items:right;">{% if user.is_authenticated %}
+    <p>hello</p>
+    <p>welcome {{ user.username }}</p>
+    <p><a href="sr_user/logout">Logout</a></p>
+    {% else %}
+    <h3>ليس لديك الصلاحيات للدخول لصفحة مدير التطبيق الرجاء التسجيل </h3>
+    <hr>
+    <p><a href="sr_user/login">Login</a></p>
+    <p><a href="sr_user/register">Register</a></p>
+    {% endif %}</div>
+  
 </div>
 <hr>
 {{msg}}

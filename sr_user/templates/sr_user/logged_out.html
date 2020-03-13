@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
+{% block content %}
+{% load static %}
+<div class="form-wrapper">
+ You have successfully logged out.
+ <a href="/">Home</a>
+</div>
+ <{% endblock content %}

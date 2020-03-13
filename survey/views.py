@@ -4,10 +4,11 @@ from django.http import HttpResponse
 from .models import MainSr, Main_Sr_Comm
 from .forms import Main_Sr_Form
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 # adding new survey details
 
-
+@login_required(login_url='/login/') #redirect when user is not logged in
 def add_survey(request):
     form = Main_Sr_Form()
     dm_new_survey = MainSr()
