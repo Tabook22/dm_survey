@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
+{% block content %}
+{% load static %}
+<div class="form-wrapper">
+    <h1 style="text-align:center;margin-top:20px;margin-bottom:40px;">صفحة مدير الموقع</h1>
+
+    <div class="main-menu">
+                <div class="btn-wrapper">
+                <a href="/survey/add_survey/" class="btn btn-primary"> إضافة المعلومات الأساسية</a>
+                </div>
+                <div class="btn-wrapper">
+                <a href="" class="btn btn-primary"> إضافة مستخدمين</a>
+                </div>
+                <div class="btn-wrapper">
+                <a href="" class="btn btn-primary"> التقارير</a>
+                </div>
+                <div class="btn-wrapper">
+                <a href="" class="btn btn-primary"> الإحصائيات</a>
+                </div>
+        </div>
+
+</div>
+{% endblock content %}

@@ -5,17 +5,22 @@
   <div class="col-6-m"><h3>بسم الله الرحمن الرحيم</h3>  
     <p>
    برنامج المسح الميداني الرجاـد تسجيل الدخول
-    </p></div>
+    </p>
+  </div>
   <div class="col-6-m" style="display:flex; flex-direction:column;justify-content:center;justify-items:right;">{% if user.is_authenticated %}
     <p>hello</p>
     <p>welcome {{ user.username }}</p>
+    <p>
+      <a href="sr_user/sr_control">الدخول لصفحة مدير الموقع</a>
+    </p>
     <p><a href="sr_user/logout">Logout</a></p>
     {% else %}
     <h3>ليس لديك الصلاحيات للدخول لصفحة مدير التطبيق الرجاء التسجيل </h3>
     <hr>
     <p><a href="sr_user/login">Login</a></p>
     <p><a href="sr_user/register">Register</a></p>
-    {% endif %}</div>
+    {% endif %}
+  </div>
   
 </div>
 <hr>

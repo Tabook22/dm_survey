@@ -9,7 +9,7 @@
 {% if object.srorg !=None and object.srorg !=''%} {{ object.srorg }} {% else %} The orgnaizer of this Survey is not yet determined {% endcomment %}
 
 {% comment %} {% if srorg !=None and object.srorg !=''%} {{ srorg }} {% else %} The orgnaizer of this Survey is not yet determined {% endcomment %}
-<div style="display:flex; justify-conent:flex-end;  justify-items:center; font-weight:bold;font-size:1.2rem;text-align:right">
+<div style="display:flex; flex-direction:row-reverse; font-weight:bold;font-size:1.2rem;text-align:right">
 <p>
 أستمارة المسح الميداني</br>المعلومات الأساسية للمسح
 </p>
@@ -39,7 +39,7 @@
     {{ form.sr_ser|as_crispy_field }}
     </div>
     </div>
-    <div class="form-row row-wrapper">
+    <div class="form-row row-wrapper" style="display:flex;flex-direction:row-reverse;">
      <div class="form-group col-md-2 mb-0 text-right">
         <div class="field-wrapper text-right">
         {{ form.sr_order|as_crispy_field }}
@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-     <div class="form-row row-wrapper">
+     <div class="form-row row-wrapper" style="display:flex;flex-direction:row-reverse;">
     <button type="submit" class="btn btn-primary" style="width:200px;">إضافة</button>
     </div>
   </form>
