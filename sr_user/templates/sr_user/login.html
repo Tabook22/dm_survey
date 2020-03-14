@@ -3,7 +3,71 @@
 {% crispy form form.helper %}
 {% block content %}
 {% load static %}
-<div class="form-wrapper">
+
+<div class="sidenav">
+    <div class="login-main-text" style="text-align:right;">
+       <h2>بلدية ظفار<br> صفحة الدخول</h2>
+       <p>الرجاء تسجيل معلومات الدخول</p>
+    </div>
+ </div>
+ <div class="main">
+    <div class="col-md-12 col-sm-12">
+       <div class="login-form" style="display:flex;flex-direction:row-reverse;align-items:stretch; padding-top:60px;">
+         <form method="POST">
+            {% csrf_token %}
+            <!-- Errors raised by the form (but not attached to a field) are stored in non_field_errors-->
+            {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <hr>
+
+        
+             <div class="form-group" style="text-align:right">
+                <label>إسم المستخدم</label>
+                <input type="text" class="form-control" name="username" placeholder="username">
+                {{field.errors}}
+             </div>
+             <div class="form-group" style="text-align:right;">
+                <label>كلمة المرور</label>
+                <input type="password" class="form-control" name="password" placeholder="password">
+                {{field.errors}}
+             </div>
+             <button type="submit" class="btn btn-black">دخول</button>
+             <!-- <button type="submit" class="btn btn-secondary">Register</button> -->
+
+          </form>
+       </div>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="form-wrapper">
     <h1>Login Form</h1>
 <form method="POST">
     {% csrf_token %}
@@ -17,5 +81,5 @@
     </p>
     <button type="submit">Login</button>
 </form>
-</div>
+</div> -->
 {% endblock content %}
