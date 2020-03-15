@@ -12,8 +12,9 @@
  </div>
  <div class="main">
     <div class="col-md-12 col-sm-12">
-       <div class="login-form" style="display:flex;flex-direction:row-reverse;align-items:stretch; padding-top:60px;">
-         <form method="POST">
+       <div class="login-form" style="text-align:center;padding-top:60px;">
+         <form method="POST" >
+
             {% csrf_token %}
             <!-- Errors raised by the form (but not attached to a field) are stored in non_field_errors-->
             {% if form.errors %}
@@ -34,7 +35,7 @@
         <hr>
 
         
-             <div class="form-group" style="text-align:right">
+             <div class="form-group" style="text-align:right;">
                 <label>إسم المستخدم</label>
                 <input type="text" class="form-control" name="username" placeholder="username">
                 {{field.errors}}
@@ -44,7 +45,7 @@
                 <input type="password" class="form-control" name="password" placeholder="password">
                 {{field.errors}}
              </div>
-             <button type="submit" class="btn btn-black">دخول</button>
+             <button type="submit" class="form-control btn btn-black">دخول</button>
              <!-- <button type="submit" class="btn btn-secondary">Register</button> -->
 
           </form>

@@ -45,6 +45,17 @@ class Main_Sr_Qys(models.Model):
     cho_4 = models.BooleanField("لا أعلم", default=False)
 
 
+class ServiceProvider(models.Model):
+    mid = models.ForeignKey(MainSr, on_delete=models.CASCADE)
+    pro_title=models.CharField(verbose_name="مزود الخدمة", max_length=255, null=True, blank=True)
+    pro_desc=models.TextField("ملاحظات", null=True, blank=True)
+
+
+class Service(models.Model):
+    spid=models.ForeignKey(ServiceProvider, on_delete=models.CASCADE)
+    ser_title=models.CharField(verbose_name="عنوان الخدمة", max_length=300, null=True, blank=True)
+    ser_desc=models.TextField("ملاحظات", null=True, blank=True)
+
 class Main_Sr_Comm(models.Model):
     mid = models.ForeignKey(MainSr, on_delete=models.CASCADE)
     sr_sgg = models.TextField(

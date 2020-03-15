@@ -1,6 +1,6 @@
 from django import forms
 from django.urls import reverse
-from .models import MainSr, Main_Sr_Comm
+from .models import MainSr, Main_Sr_Comm,ServiceProvider,Service
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, Row, Column, Field, HTML, Fieldset
@@ -46,4 +46,32 @@ class Main_Sr_Form(forms.ModelForm):
             'sr_ser',
             'sr_status',
             'sr_order',
+        ]
+
+
+class ServiceProvider_Form(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(Main_Sr_Form, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'post'
+  
+    class Meta:
+        model = ServiceProvider
+        fields = [
+            'pro_title',
+            'pro_desc',
+        ]
+
+
+class Service_Form(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(Main_Sr_Form, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'post'
+  
+    class Meta:
+        model = Service
+        fields = [
+            'ser_title',
+            'ser_desc',
         ]

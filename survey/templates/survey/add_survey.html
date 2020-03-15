@@ -9,9 +9,11 @@
 {% if object.srorg !=None and object.srorg !=''%} {{ object.srorg }} {% else %} The orgnaizer of this Survey is not yet determined {% endcomment %}
 
 {% comment %} {% if srorg !=None and object.srorg !=''%} {{ srorg }} {% else %} The orgnaizer of this Survey is not yet determined {% endcomment %}
-<div style="display:flex; flex-direction:row-reverse; font-weight:bold;font-size:1.2rem;text-align:right">
+<div style="display:flex; flex-direction:row-reverse; font-weight:bold;font-size:1.2rem;text-align:right;padding:20px;">
 <p>
-أستمارة المسح الميداني</br>المعلومات الأساسية للمسح
+أستمارة المسح الميداني</br>
+
+من خلال هذة الإستمارة يمكنك تسجيل الأسئلة الخاصة بالإستبيان
 </p>
 </div> 
 
@@ -25,6 +27,7 @@
 
   <form method="post" action="/survey/add_survey/" >
     {% csrf_token %}
+    <div style="padding:20px;">
    <div class="form-row row-wrapper">
 
       <div class="form-group col-md-6 mb-0 text-right">
@@ -54,6 +57,9 @@
      <div class="form-row row-wrapper" style="display:flex;flex-direction:row-reverse;">
     <button type="submit" class="btn btn-primary" style="width:200px;">إضافة</button>
     </div>
+  
+  </div>
+  
   </form>
 </div>
 {% endblock content %}
