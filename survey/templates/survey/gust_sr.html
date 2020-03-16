@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy form form.helper %}
+{% block content %}
+{% load static %}
+<link href="{% static 'survey/css/add_form.css' %}" rel="stylesheet">
+<div class="form-wrapper">
+  {% comment %}
+  {% if object.srorg !=None and object.srorg !=''%} {{ object.srorg }} {% else %} The orgnaizer of this Survey is not yet determined -->
+
+  {% endcomment %}
+  {% comment %}
+  {% if srorg !=None and object.srorg !=''%} {{ srorg }} {% else %} The orgnaizer of this Survey is not yet determined
+  {% endcomment %}
+  <div style="display:flex; flex-direction:row-reverse; font-weight:bold;font-size:1.2rem;text-align:right;padding:20px;">
+    <p>
+      أستمارة المسح الميداني</br>
+
+      من خلال هذة الإستمارة يمكنك تسجيل الأسئلة الخاصة بالإستبيان
+    </p>
+  </div>
+
+  <hr>
+
+  {% comment %} <form>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type='submit' value='Save' />
+  </form> {% endcomment %}
+
+  <form method="post" action="/survey/gust_sr/">
+    {% csrf_token %}
+    <div style="padding:20px;">
+      <div class="form-row row-wrapper>
+        <div class="form-group col-md-6 mb-0 text-right">
+          {{ form.mid|as_crispy_field }}
+        </div>
+        <div class="" style="display:flex;flex-directions:row">
+            <table class="table" style="direction:rtl;">
+                <thead>
+                  <tr>
+                    <th scope="col">مرضي</th>
+                    <th scope="col">مرضي نوعاً ما</th>
+                    <th scope="col">غير مرضي</th>
+                    <th scope="col">لا أعلم</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">{{ form.cho_1|as_crispy_field }}</th>
+                    <td>{{ form.cho_2|as_crispy_field }}</td>
+                    <td>{{ form.cho_3|as_crispy_field }}</td>
+                    <td>{{ form.cho_4|as_crispy_field }}</td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+
+
+<!-- 
+            <div class="form-group col-md-6 mb-0 text-right">
+                <lable>مرضي</lable>
+                {{ form.cho_1|as_crispy_field }}
+              </div>
+            </div>
+            <div class="form-row row-wrapper">
+              <div class="form-group col-md-12 mb-0 text-right">
+                <lable>مرضي نوعا ما</lable>
+                
+                {{ form.cho_2|as_crispy_field }}
+              </div>
+            </div>
+            <div class="form-row row-wrapper">
+              <div class="form-group col-md-12 mb-0 text-right">
+                <lable>غير مرضي</lable>
+                {{ form.cho_3|as_crispy_field }}
+              </div>
+            </div>
+            <div class="form-row row-wrapper">
+              <div class="form-group col-md-12 mb-0 text-right">
+                <lable>لا أعلم</lable>
+                {{ form.cho_4|as_crispy_field }}
+              </div>
+            </div>       -->
+        </div>
+        
+
+      <div class="form-row row-wrapper" style="display:flex;flex-direction:row-reverse;">
+        <button type="submit" class="btn btn-primary" style="width:200px;">إضافة</button>
+      </div>
+
+    </div>
+
+  </form>
+</div>
+{% endblock content %}

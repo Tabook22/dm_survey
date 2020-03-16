@@ -24,6 +24,10 @@ class MainSr(models.Model):
     sr_status = models.BooleanField(
         choices=TRUE_FALSE_CHOICES, default=True, help_text="يظهز السؤال في الإستبيان", verbose_name="الحالة", null=True, blank=True)
     # verbose_name="الحالة", null=True, blank=True)
+    cho_1 = models.BooleanField("مرضي", default=False)
+    cho_2 = models.BooleanField("مرضي نوعاً ما", default=False)
+    cho_3 = models.BooleanField("غير مرضي", default=False)
+    cho_4 = models.BooleanField("لا أعلم", default=False)
 
     class Meta:
         ordering = ('-sr_order',)
@@ -43,6 +47,16 @@ class Main_Sr_Qys(models.Model):
     cho_2 = models.BooleanField("مرضي نوعاً ما", default=False)
     cho_3 = models.BooleanField("غير مرضي", default=False)
     cho_4 = models.BooleanField("لا أعلم", default=False)
+
+
+class GustSr(models.Model):
+    dt = models.DateTimeField(auto_now_add=True)
+    gstname = models.CharField(verbose_name="الاسم", max_length=255, null=True, blank=True)
+    gstname = models.CharField(verbose_name="العمر", max_length=255, null=True, blank=True)
+    gstname = models.CharField(verbose_name="المنطقة", max_length=255, null=True, blank=True)
+    gstname = models.CharField(verbose_name="المستوى التعليمي", max_length=255, null=True, blank=True)
+    gstname = models.CharField(verbose_name="الهاتف/النقال", max_length=255, null=True, blank=True)
+    gstname = models.CharField(verbose_name="البريد الإلكتروني", max_length=255, null=True, blank=True)
 
 
 class ServiceProvider(models.Model):
