@@ -33,12 +33,12 @@
     <div style="padding:20px;">
       <div class="form-row row-wrapper>
         <div class="form-group col-md-6 mb-0 text-right">
-          {{ form.mid|as_crispy_field }}
         </div>
         <div class="" style="display:flex;flex-directions:row">
             <table class="table" style="direction:rtl;">
                 <thead>
                   <tr>
+                    <th scope="col">الجهة المنفذة للإستبيان</th>
                     <th scope="col">مرضي</th>
                     <th scope="col">مرضي نوعاً ما</th>
                     <th scope="col">غير مرضي</th>
@@ -46,13 +46,15 @@
                   </tr>
                 </thead>
                 <tbody>
+                    {% for items in getall%}
                   <tr>
-                    <th scope="row">{{ form.cho_1|as_crispy_field }}</th>
+                    <td style="text-align:right;">{{items.sr_ser}}</td>
+                    <td>{{ form.cho_1|as_crispy_field }}</td>
                     <td>{{ form.cho_2|as_crispy_field }}</td>
                     <td>{{ form.cho_3|as_crispy_field }}</td>
                     <td>{{ form.cho_4|as_crispy_field }}</td>
                   </tr>
-                  
+                  {% endfor %}
                 </tbody>
               </table>
 

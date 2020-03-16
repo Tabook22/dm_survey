@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="row" style="padding-top:20px;; display:flex;flex-direction:row;justify-content:center;justify-items:center;">
+  <div class="sidenav">
+    <div class="login-main-text" style="text-align:right;">
+      <h2>بلدية ظفار<br> الصفحة الرئيسية</h2>
+      <p>برنامج المسح الميداني لأراء الناس حول الخدمات المقدمة من قبل بلدية ظفار</p>
+    </div>
+  </div>
+  <div class="main">
+    <div class="col-md-12 col-sm-12">
+      <div class="" style="padding-top:2rem;text-align:center;">
+        <img src="{% static 'dm/img/dm_logo2.jpg' %}" style="max-width:10rem;">
+      </div>
+    </div>
+    <div class="col-md-12 col-sm-12">
+      <div class="">
+        <h1 style="text-align:center;margin-top:20px;margin-bottom:40px;">صفحة مدير الموقع</h1>
+
+        <div class="main-menu">
+          <div class="btn-wrapper">
+            <a href="/survey/add_survey/" class="btn btn-main-menu" style="background-color:#343A40;color:#f1f1f1;"> إضافة المعلومات الأساسية</a>
+          </div>
+          <div class="btn-wrapper">
+            <a href="" class="btn btn-main-menu" style="background-color:#343A40;color:#f1f1f1;"> إضافة مستخدمين</a>
+          </div>
+          <div class="btn-wrapper">
+            <a href="" class="btn btn-main-menu" style="background-color:#343A40;color:#f1f1f1;"> التقارير</a>
+          </div>
+          <div class="btn-wrapper">
+            <a href="" class="btn " style="background-color:#343A40;color:#f1f1f1;"> الإحصائيات</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {% endblock content %}

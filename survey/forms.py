@@ -12,6 +12,7 @@ class Main_Sr_Form(forms.ModelForm):
         super(Main_Sr_Form, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_method = 'post'
+        self.helper.form_show_labels = False
         #self.helper.form_action = reverse('survey:survey_list')
         # self.helper.layout = Layout(
         #     Row(
@@ -41,11 +42,11 @@ class Main_Sr_Form(forms.ModelForm):
     class Meta:
         model = MainSr
         fields = [
-            'sr_org',
-            'sr_loc',
             'sr_ser',
-            'sr_status',
-            'sr_order',
+            'cho_1',
+            'cho_2',
+            'cho_3',
+            'cho_4',
         ]
 
 
