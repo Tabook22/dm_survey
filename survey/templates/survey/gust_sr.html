@@ -49,6 +49,8 @@
                     {% for items in getall%}
                   <tr>
                     <td style="text-align:right;">{{items.sr_ser}}</td>
+                    <td><input id="srdId" name="srId" type="" value="{{items.id}}"></td>
+                    <td><input id="gstId" name="gstId" type="" value="{{gstId}}"></td>
                     <td>{{ form.cho_1|as_crispy_field }}</td>
                     <td>{{ form.cho_2|as_crispy_field }}</td>
                     <td>{{ form.cho_3|as_crispy_field }}</td>

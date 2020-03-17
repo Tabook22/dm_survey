@@ -5,6 +5,9 @@ from .models import MainSr, Main_Sr_Comm,Main_Sr_Qys
 from .forms import Main_Sr_Form, QysChoice_Form
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
+from dateutil import tz
+
 # Create your views here.
 # adding new survey details
 
@@ -26,7 +29,7 @@ def add_survey(request):
         srstatus = request.POST.get("sr_status")
         if srstatus == 'true':
             srstatus = True
-        elif srstatus == "false":
+        else:
             srstatus = False
 
         # adding data to the model
@@ -64,44 +67,43 @@ def gust_sr(request):
     
     if request.method == "POST":
         print("++++++++++++++++++++++++++++++")
-        for i in getId:
-            print(request.POST.get("cho_1"))
-            print(request.POST.get("cho_2"))
-            print(request.POST.get("cho_3"))
-            print(request.POST.get("cho_4"))
+        print(getId)
+        print("##########################")
+       
+        # for i in getId:
+        #     ddd=request.POST.get("srId")
+        #     print("***************{}".format(ddd))
+        #     if i==request.POST.get("srId"):
+        #         print("Ok")
+        #         print(request.POST.get("cho_1"))
+        #         print(request.POST.get("cho_2"))
+        #         print(request.POST.get("cho_3"))
+        #         print(request.POST.get("cho_4"))
         # getting the id of the Place which will be saved. the id will be sent inside a hidden filed from the form
         #sremp = request.user
         for i in getId:
             cho1 = request.POST.get("cho_1")
-            if cho1=='true':
-                cho1=True
-            else:
-                cho1=False
             cho2 = request.POST.get("cho_2")
-            if cho2=='true':
-                cho2=True
-            else:
-                cho2=False
             cho3= request.POST.get("cho_3")
-            if cho3=='true':
-                cho3=True
-            else:
-                cho3=False
             cho4 = request.POST.get("cho_4")
-            if cho4=='true':
-                cho4=True
-            else:
-                cho4=False
-        
-        
+            gstid= request.POST.get("gstId")
             # adding data to the model
-            gst_new_survey = MainSr(sr_emp=request.user,cho_1=cho1, cho_2=cho2, cho_3=cho3, cho_4=cho4)
+            gst_new_survey = MainSr(sr_emp=request.user,cho_1=cho1, cho_2=cho2, cho_3=cho3, cho_4=cho4,gstId=gstid)
             gst_new_survey.save()
             context = {'form': form}
             return render(request, "index.html", context)
     else:
+        #generate a random gust numbers based on current time
+
+        
+        dateTimeObj=datetime.now()
+        timestampStr = dateTimeObj.strftime("%d%m%Y%H%M%S%f)")
+        #ctm=datetime.datetime.now().time()
+        gstId=timestampStr
+        print("=========================={}".format(gstId))
         getAll=MainSr.objects.all()
         context = {'form': form,
+                    'gstId':gstId,
                    'getall': getAll}
         
         
