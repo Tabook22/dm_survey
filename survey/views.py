@@ -17,6 +17,7 @@ def add_survey(request):
 
     if request.method == "POST":
         # getting the id of the Place which will be saved. the id will be sent inside a hidden filed from the form
+       
         sremp = request.user
         srorg = request.POST.get("sr_org")
         srloc = request.POST.get("sr_loc")
@@ -58,39 +59,46 @@ def gust_sr(request):
     form = Main_Sr_Form()
     gst_new_survey = MainSr()
     context = {'form': form}
-
+    getId=MainSr.objects.values_list('id', flat=True).order_by('id')
+ 
+    
     if request.method == "POST":
+        print("++++++++++++++++++++++++++++++")
+        for i in getId:
+            print(request.POST.get("cho_1"))
+            print(request.POST.get("cho_2"))
+            print(request.POST.get("cho_3"))
+            print(request.POST.get("cho_4"))
         # getting the id of the Place which will be saved. the id will be sent inside a hidden filed from the form
         #sremp = request.user
-        midlst=MainSr.objects.values_list('id')
-        print("------------------------ {}".format(midlst))
-        cho1 = request.POST.get("cho_1")
-        if cho1=='true':
-            cho1=True
-        else:
-            cho1=False
-        cho2 = request.POST.get("cho_2")
-        if cho2=='true':
-            cho2=True
-        else:
-            cho2=False
-        cho3= request.POST.get("cho_3")
-        if cho3=='true':
-            cho3=True
-        else:
-            cho3=False
-        cho4 = request.POST.get("cho_4")
-        if cho4=='true':
-            cho4=True
-        else:
-            cho4=False
-       
-    
-        # adding data to the model
-        gst_new_survey = MainSr(sr_emp=request.user,cho_1=cho1, cho_2=cho2, cho_3=cho3, cho_4=cho4)
-        gst_new_survey.save()
-        context = {'form': form}
-        return render(request, "index.html", context)
+        for i in getId:
+            cho1 = request.POST.get("cho_1")
+            if cho1=='true':
+                cho1=True
+            else:
+                cho1=False
+            cho2 = request.POST.get("cho_2")
+            if cho2=='true':
+                cho2=True
+            else:
+                cho2=False
+            cho3= request.POST.get("cho_3")
+            if cho3=='true':
+                cho3=True
+            else:
+                cho3=False
+            cho4 = request.POST.get("cho_4")
+            if cho4=='true':
+                cho4=True
+            else:
+                cho4=False
+        
+        
+            # adding data to the model
+            gst_new_survey = MainSr(sr_emp=request.user,cho_1=cho1, cho_2=cho2, cho_3=cho3, cho_4=cho4)
+            gst_new_survey.save()
+            context = {'form': form}
+            return render(request, "index.html", context)
     else:
         getAll=MainSr.objects.all()
         context = {'form': form,
