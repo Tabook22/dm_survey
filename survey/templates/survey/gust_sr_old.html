@@ -38,10 +38,7 @@
             <table class="table" style="direction:rtl;">
                 <thead>
                   <tr>
-                    <th style="text-align:right;">التسلسل</ht>
-                    <th style="text-align:right;" scope="col">الجهة المنفذة للإستبيان</th>
-                    <th></ht>
-                    <th></ht>
+                    <th scope="col">الجهة المنفذة للإستبيان</th>
                     <th scope="col">مرضي</th>
                     <th scope="col">مرضي نوعاً ما</th>
                     <th scope="col">غير مرضي</th>
@@ -51,21 +48,44 @@
                 <tbody>
                     {% for items in getall%}
                   <tr>
-                    <td style="text-align:right;">{{forloop.counter}}</td>
-                    <td style="text-align:right;">{{items.sr_ser1}}</td>
-                    <td><input id="srdId" name="srId" type="hidden" value="{{items.id}}"></td>
-                    <td><input id="gstId" name="gstId" type="hidden" value="{{gstId}}"></td>
-                    
-                    <td>{{ form.cho1_1|as_crispy_field }}</td>
-                    <td>{{ form.cho1_2|as_crispy_field }}</td>
-                    <td>{{ form.cho1_3|as_crispy_field }}</td>
-                    <td>{{ form.cho1_4|as_crispy_field }}</td>
+                    <td style="text-align:right;">{{items.sr_ser}}</td>
+                    <td><input id="srdId" name="srId" type="" value="{{items.id}}"></td>
+                    <td><input id="gstId" name="gstId" type="" value="{{gstId}}"></td>
+                    <td>{{ form.cho_1|as_crispy_field }}</td>
+                    <td>{{ form.cho_2|as_crispy_field }}</td>
+                    <td>{{ form.cho_3|as_crispy_field }}</td>
+                    <td>{{ form.cho_4|as_crispy_field }}</td>
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>
 
 
+<!-- 
+            <div class="form-group col-md-6 mb-0 text-right">
+                <lable>مرضي</lable>
+                {{ form.cho_1|as_crispy_field }}
+              </div>
+            </div>
+            <div class="form-row row-wrapper">
+              <div class="form-group col-md-12 mb-0 text-right">
+                <lable>مرضي نوعا ما</lable>
+                
+                {{ form.cho_2|as_crispy_field }}
+              </div>
+            </div>
+            <div class="form-row row-wrapper">
+              <div class="form-group col-md-12 mb-0 text-right">
+                <lable>غير مرضي</lable>
+                {{ form.cho_3|as_crispy_field }}
+              </div>
+            </div>
+            <div class="form-row row-wrapper">
+              <div class="form-group col-md-12 mb-0 text-right">
+                <lable>لا أعلم</lable>
+                {{ form.cho_4|as_crispy_field }}
+              </div>
+            </div>       -->
         </div>
         
 

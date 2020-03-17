@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.http import HttpResponse
-from .models import MainSr, Main_Sr_Comm,Main_Sr_Qys
-from .forms import Main_Sr_Form, QysChoice_Form
+from .models import MainSr, MainSr2, Main_Sr_Comm,Main_Sr_Qys
+from .forms import Main_Sr_Form, QysChoice_Form,Main_Sr2_Form
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
@@ -59,8 +59,8 @@ def survey_list(request):
 
 #Gust new service this will add guest replies to the survey into the database
 def gust_sr(request):
-    form = Main_Sr_Form()
-    gst_new_survey = MainSr()
+    form = Main_Sr2_Form()
+    gst_new_survey = MainSr2()
     context = {'form': form}
     getId=MainSr.objects.values_list('id', flat=True).order_by('id')
  
@@ -101,7 +101,7 @@ def gust_sr(request):
         #ctm=datetime.datetime.now().time()
         gstId=timestampStr
         print("=========================={}".format(gstId))
-        getAll=MainSr.objects.all()
+        getAll=MainSr2.objects.all()
         context = {'form': form,
                     'gstId':gstId,
                    'getall': getAll}

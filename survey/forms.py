@@ -1,6 +1,6 @@
 from django import forms
 from django.urls import reverse
-from .models import MainSr, Main_Sr_Comm, ServiceProvider, Service, Main_Sr_Qys
+from .models import MainSr, MainSr2, Main_Sr_Comm, ServiceProvider, Service, Main_Sr_Qys
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit, Row, Column, Field, HTML, Fieldset
@@ -48,6 +48,123 @@ class Main_Sr_Form(forms.ModelForm):
             'cho_3',
             'cho_4',
         ]
+
+
+class Main_Sr2_Form(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(Main_Sr2_Form, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'post'
+        self.helper.form_show_labels = False
+        
+    class Meta:
+        model = MainSr2
+        fields = [
+            'sr_ser1',
+            'cho1_1',
+            'cho1_2',
+            'cho1_3',
+            'cho1_4',
+            'sr_ser2',
+            'cho2_1',
+            'cho2_2',
+            'cho2_3',
+            'cho2_4',         
+            'sr_ser3',
+            'cho3_1',
+            'cho3_2',
+            'cho3_3',
+            'sr_ser4',
+            'cho4_1',
+            'cho4_2',
+            'cho4_4',
+            'sr_ser5',
+            'cho5_1',
+            'cho5_2',
+            'cho5_3',
+            'cho5_4',
+            'sr_ser6',
+            'cho6_1',
+            'cho6_2',
+            'cho6_3',
+            'cho6_4',
+            'sr_ser7',
+            'cho7_2',
+            'cho7_3',
+            'sr_ser8',
+            'cho8_1',
+            'cho8_2',
+            'cho8_3',
+            'cho8_4',
+            'sr_ser9',
+            'cho9_1',
+            'cho9_2',
+            'cho9_3',
+            'cho9_4',
+            'sr_ser10',
+            'cho10_1',
+            'cho10_2',
+            'cho10_3',
+            'cho10_4',
+            'sr_ser11',
+            'cho11_1',
+            'cho11_2',
+            'cho11_3',
+            'cho11_4',
+            'sr_ser12',
+            'cho12_1',
+            'cho12_2',
+            'cho12_3',
+            'cho12_4',
+            'sr_ser13',
+            'cho13_1',
+            'cho13_2',
+            'cho13_3',
+            'cho13_4',
+            'sr_ser14',
+            'cho14_1',
+            'cho14_2',
+            'cho14_3',
+            'cho14_4',
+            'sr_ser15',
+            'cho15_1',
+            'cho15_2',
+            'cho15_3',
+            'cho15_4',
+            'sr_ser16',
+            'cho16_1',
+            'cho16_2',
+            'cho16_3',
+            'cho16_4',
+            'sr_ser17',
+            'cho17_1',
+            'cho17_2',
+            'cho17_3',
+            'cho17_4',
+            'sr_ser18',
+            'cho18_1',
+            'cho18_2',
+            'cho18_3',
+            'cho18_4',
+            'sr_ser19',
+            'cho19_1',
+            'cho19_2',
+            'cho19_3',
+            'cho19_4',
+            'sr_ser20',
+            'cho20_1',
+            'cho20_2',
+            'cho20_3',
+            'cho20_4',
+            'sr_ser21',
+            'cho21_1',
+            'cho21_2',
+            'cho21_3',
+            'cho21_4',
+            'sr_ser22',
+            'gst_comm',
+        ]
+
 
 
 class ServiceProvider_Form(forms.ModelForm):
