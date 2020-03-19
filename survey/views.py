@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from dateutil import tz
+from django.forms.models import model_to_dict
 
 # Create your views here.
 # adding new survey details
@@ -59,55 +60,29 @@ def survey_list(request):
 
 #Gust new service this will add guest replies to the survey into the database
 def gust_sr(request):
-    form = Main_Sr2_Form()
-    gst_new_survey = MainSr2()
-    context = {'form': form}
-    getId=MainSr.objects.values_list('id', flat=True).order_by('id')
+    #here we are going to get an old data from the MainSr model and we are going to pass it to the form which we tray to add it with the new user
+    #getSrvData=MainSr2.objects.all()
+    getSrvData=MainSr2.objects.all()[0] #getting the first record
+    my_dict = getSrvData.__dict__
+    form = Main_Sr2_Form(my_dict)
+    #gst_new_survey = MainSr2()
+   # context = {'form': form}
+    #getId=MainSr.objects.values_list('id', flat=True).order_by('id')
  
     
     if request.method == "POST":
-        print("++++++++++++++++++++++++++++++")
-        print(getId)
-        print("##########################")
-       
-        # for i in getId:
-        #     ddd=request.POST.get("srId")
-        #     print("***************{}".format(ddd))
-        #     if i==request.POST.get("srId"):
-        #         print("Ok")
-        #         print(request.POST.get("cho_1"))
-        #         print(request.POST.get("cho_2"))
-        #         print(request.POST.get("cho_3"))
-        #         print(request.POST.get("cho_4"))
-        # getting the id of the Place which will be saved. the id will be sent inside a hidden filed from the form
-        #sremp = request.user
-        for i in getId:
-            cho1 = request.POST.get("cho_1")
-            cho2 = request.POST.get("cho_2")
-            cho3= request.POST.get("cho_3")
-            cho4 = request.POST.get("cho_4")
-            gstid= request.POST.get("gstId")
-            # adding data to the model
-            gst_new_survey = MainSr(sr_emp=request.user,cho_1=cho1, cho_2=cho2, cho_3=cho3, cho_4=cho4,gstId=gstid)
-            gst_new_survey.save()
-            context = {'form': form}
-            return render(request, "index.html", context)
-    else:
-        #generate a random gust numbers based on current time
+        pass
 
-        
+    else:
+        #generate a random gust numbers based on current time, to be used as gust id  
         dateTimeObj=datetime.now()
         timestampStr = dateTimeObj.strftime("%d%m%Y%H%M%S%f)")
         #ctm=datetime.datetime.now().time()
         gstId=timestampStr
         print("=========================={}".format(gstId))
-        getAll=MainSr2.objects.all()
         context = {'form': form,
-                    'gstId':gstId,
-                   'getall': getAll}
-        
-        
-
+                    'gstId':gstId}
+    
     return render(request, "survey/gust_sr.html", context)
 
 

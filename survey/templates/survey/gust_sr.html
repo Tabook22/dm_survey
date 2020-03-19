@@ -5,13 +5,6 @@
 {% load static %}
 <link href="{% static 'survey/css/add_form.css' %}" rel="stylesheet">
 <div class="form-wrapper">
-  {% comment %}
-  {% if object.srorg !=None and object.srorg !=''%} {{ object.srorg }} {% else %} The orgnaizer of this Survey is not yet determined -->
-
-  {% endcomment %}
-  {% comment %}
-  {% if srorg !=None and object.srorg !=''%} {{ srorg }} {% else %} The orgnaizer of this Survey is not yet determined
-  {% endcomment %}
   <div style="display:flex; flex-direction:row-reverse; font-weight:bold;font-size:1.2rem;text-align:right;padding:20px;">
     <p>
       أستمارة المسح الميداني</br>
@@ -22,26 +15,13 @@
 
   <hr>
 
-  {% comment %} <form>
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input type='submit' value='Save' />
-  </form> {% endcomment %}
-
   <form method="post" action="/survey/gust_sr/">
-    {% csrf_token %}
-    <div style="padding:20px;">
-      <div class="form-row row-wrapper>
-        <div class="form-group col-md-6 mb-0 text-right">
-        </div>
-        <div class="" style="display:flex;flex-directions:row">
-            <table class="table" style="direction:rtl;">
+    {% csrf_token %} 
+
+    <table class="table" style="direction:rtl;">
                 <thead>
                   <tr>
-                    <th style="text-align:right;">التسلسل</ht>
-                    <th style="text-align:right;" scope="col">الجهة المنفذة للإستبيان</th>
-                    <th></ht>
-                    <th></ht>
+                    <th scope="col">الجهة المنفذة للإستبيان</th>
                     <th scope="col">مرضي</th>
                     <th scope="col">مرضي نوعاً ما</th>
                     <th scope="col">غير مرضي</th>
@@ -49,32 +29,24 @@
                   </tr>
                 </thead>
                 <tbody>
-                    {% for items in getall%}
-                  <tr>
-                    <td style="text-align:right;">{{forloop.counter}}</td>
-                    <td style="text-align:right;">{{items.sr_ser1}}</td>
-                    <td><input id="srdId" name="srId" type="hidden" value="{{items.id}}"></td>
-                    <td><input id="gstId" name="gstId" type="hidden" value="{{gstId}}"></td>
-                    
-                    <td>{{ form.cho1_1|as_crispy_field }}</td>
-                    <td>{{ form.cho1_2|as_crispy_field }}</td>
-                    <td>{{ form.cho1_3|as_crispy_field }}</td>
-                    <td>{{ form.cho1_4|as_crispy_field }}</td>
-                  </tr>
-                  {% endfor %}
+
+    {% for field in form %}
+   <!-- {{form.as_table}} -->
+  <tr><td>
+                     <div class="form-group">
+      {% comment %} {{ field.label_tag }} {% endcomment %}
+      {{ field }}
+      {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+      {% endif %}
+    </div>
+    <td>
+    <tr>            
+  {% endfor %}
+
                 </tbody>
               </table>
-
-
-        </div>
-        
-
-      <div class="form-row row-wrapper" style="display:flex;flex-direction:row-reverse;">
-        <button type="submit" class="btn btn-primary" style="width:200px;">إضافة</button>
-      </div>
-
-    </div>
-
-  </form>
+  {% comment %} {% buttons submit='OK' reset='Cancel' layout='horizontal' %}{% endbuttons %} {% endcomment %}
+   </form>
 </div>
 {% endblock content %}

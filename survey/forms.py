@@ -53,12 +53,17 @@ class Main_Sr_Form(forms.ModelForm):
 class Main_Sr2_Form(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(Main_Sr2_Form, self).__init__(*args, **kwargs)
-        self.helper = FormHelper(self)
+        self.helper = FormHelper(self) # the form helper objects tells crispy form  that we need to wrap our form object in form tags
         self.helper.form_method = 'post'
-        self.helper.form_show_labels = False
+        self.helper.form_show_labels = True
+
         
     class Meta:
         model = MainSr2
+        # widgets={
+        #     'sr_ser':forms.TextInput(attrs={'class':'form-control', 'placeholder':'الخدمة'}),
+        #     'cho_1'
+        # }
         fields = [
             'sr_ser1',
             'cho1_1',
