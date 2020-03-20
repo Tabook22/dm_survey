@@ -1,22 +1,14 @@
-
-html, body, #myDiv {height: 100%, width: 100%} 
-body {
+html, body {
+  height: 100%;
   background-color: #f1f1f1;
 }
-.container {
-  position: relative;
-  background-color: #fff;
-  height:100vh;
-  width:100%
 
+body{
+  display:flex;
+  flex-direction:column;
 }
-.main-content {
-    top:0;
-    left:0;
-  height: 100%;
-  width:100%;
- background-color: #fff;
-}
+
+
 .site-title {
   padding-right: 10rem;
   color: white;
@@ -24,15 +16,27 @@ body {
 }
 
 
-.form-wrapper {
-  margin-top: 160px;
+.content {
+  top:400px;
+  background-color:#fff;
+  flex: 1 0 auto;
+  padding:20px;
+}
+.container{
+  background-color:#fff;
+}
+/**   Footer **/
+
+.footer {
+  flex-shrink: 0;
 }
 
 
-/**   Footer **/
+
+
 
 .section-padding {
-	padding: 60px 0;
+	padding: 10px 0;
 }
 .bottom {
     background-color: #0a1c2e;

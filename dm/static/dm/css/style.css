@@ -10,7 +10,7 @@ body{
 }
 
 .container{
-  
+  position: relative;
 min-height:680px;
   padding: 0 15px;
 }
