@@ -287,7 +287,7 @@ def gust_sr(request):
             gstId=gst_id
             )
         gstrsp.save()
-        return render(request, "survey/gust_sr.html", context)
+        return render(request, "index.html")
     else:
         #here we are trying to generate a random gust id to put it inside th survery because each gust must have a gust id to participate in the survey
         #generate a random gust numbers based on current time, to be used as gust id  
@@ -297,7 +297,32 @@ def gust_sr(request):
         gstId=timestampStr
 
         #here i want to get the id of the active suvery from MainSr model
-        getActSr=MainSr.objects.get(sr_status=True)
+        getActSr=MainSr2.objects.get(gstId=1234)
+        my_dict = getActSr.__dict__
+        form=Main_Sr2_Form(initial={'sr_ser1':my_dict['sr_ser1'],
+        'sr_ser1':my_dict['sr_ser1'],
+        'sr_ser2':my_dict['sr_ser2'],
+        'sr_ser3':my_dict['sr_ser3'],
+        'sr_ser4':my_dict['sr_ser14'],
+        'sr_ser5':my_dict['sr_ser5'],
+        'sr_ser6':my_dict['sr_ser6'],
+        'sr_ser7':my_dict['sr_ser7'],
+        'sr_ser8':my_dict['sr_ser8'],
+        'sr_ser9':my_dict['sr_ser9'],
+        'sr_ser10':my_dict['sr_ser10'],
+        'sr_ser11':my_dict['sr_ser11'],
+        'sr_ser12':my_dict['sr_ser12'],
+        'sr_ser13':my_dict['sr_ser13'],
+        'sr_ser14':my_dict['sr_ser14'],
+        'sr_ser15':my_dict['sr_ser15'],
+        'sr_ser16':my_dict['sr_ser16'],
+        'sr_ser17':my_dict['sr_ser17'],
+        'sr_ser18':my_dict['sr_ser18'],
+        'sr_ser19':my_dict['sr_ser19'],
+        'sr_ser20':my_dict['sr_ser20'],
+        'sr_ser21':my_dict['sr_ser21'],
+        'sr_ser22':my_dict['sr_ser22'],
+        })
         context = {'form': form,
                     'srgstId':gstId,
                     'mid':getActSr.id}
