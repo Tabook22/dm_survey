@@ -12,34 +12,16 @@ class MainSr(models.Model):
     )
     # models.ForeignKey(settings.AUTH_USER_MODEL)
     sr_emp = models.ForeignKey(User, on_delete=models.CASCADE)
-    gstId=models.CharField(
-        verbose_name="رقم المشارك", max_length=255, null=True, blank=True)
     dt = models.DateTimeField(auto_now_add=True)
     sr_org = models.CharField(
         verbose_name="الجهة المنفذة للمسح الميداني", max_length=255, null=True, blank=True)
     sr_loc = models.CharField(
         verbose_name="الجهة المنفذة للخدمة", max_length=255, null=True, blank=True)
-    sr_ser = models.CharField(
-        verbose_name="نوع الخدمة المقدمة", max_length=255, null=True, blank=True)
-    sr_order = models.PositiveSmallIntegerField(
-        verbose_name="ترتيب السؤال", default=1, validators=[MinValueValidator(1), MaxValueValidator(100)], null=True, blank=True)
+    sr_desc=models.TextField(verbose_name="شرح مختصر عن الإستبيان", null=True, blank=True)
     sr_status = models.BooleanField(choices=TRUE_FALSE_CHOICES, default=True, help_text="يظهز السؤال في الإستبيان", verbose_name="الحالة", null=True, blank=True)
-    # verbose_name="الحالة", null=True, blank=True)
-    cho_1 = models.BooleanField(choices=TRUE_FALSE_CHOICES, help_text="مرضي", default=False)
-    cho_2 = models.BooleanField(choices=TRUE_FALSE_CHOICES,help_text="مرضي نوعاً ما", default=False)
-    cho_3 = models.BooleanField(choices=TRUE_FALSE_CHOICES,help_text="غير مرضي", default=False)
-    cho_4 = models.BooleanField(choices=TRUE_FALSE_CHOICES,help_text="لا أعلم", default=False)
-
-    class Meta:
-        ordering = ('-sr_order',)
-
+    
     def __str__(self):
-        return self.sr_ser
-
-    def clean(self):
-        if self.sr_order < 1:
-            raise ValidationError(
-                ('Only numbers equal to 1 or greater are accepted.'))
+        return self.sr_org
 
 
 
@@ -49,6 +31,10 @@ class MainSr2(models.Model):
         (False, 'لا')
     )
     # models.ForeignKey(settings.AUTH_USER_MODEL)
+    gstId=models.CharField(verbose_name="رقم المشارك", max_length=255, null=True, blank=True)
+    mid = models.ForeignKey(MainSr, on_delete=models.CASCADE, default='')
+    sr_order = models.PositiveSmallIntegerField(verbose_name="ترتيب السؤال", default=1, validators=[MinValueValidator(1), MaxValueValidator(100)], null=True, blank=True)
+    sr_status = models.BooleanField(choices=TRUE_FALSE_CHOICES, default=True, help_text="يظهز السؤال في الإستبيان", verbose_name="الحالة", null=True, blank=True)
     sr_ser1 = models.CharField(verbose_name="نوع الخدمة المقدمة", max_length=255, null=True, blank=True )
     cho1_1 = models.BooleanField(choices=TRUE_FALSE_CHOICES, help_text="مرضي", default=False)
     cho1_2 = models.BooleanField(choices=TRUE_FALSE_CHOICES,help_text="مرضي نوعاً ما", default=False)
@@ -158,11 +144,11 @@ class MainSr2(models.Model):
     gst_comm=models.TextField(verbose_name="المقترحات", null=True, blank=True)
     
     
-    # class Meta:
-    #     ordering = ('-sr_order',)
+    class Meta:
+        ordering = ('-sr_order',)
 
-    # def __str__(self):
-    #     return self.id
+    def __str__(self):
+        return self.id
 
     # def clean(self):
     #     if self.sr_order < 1:
@@ -182,12 +168,14 @@ class Main_Sr_Qys(models.Model):
 
 class GustSr(models.Model):
     dt = models.DateTimeField(auto_now_add=True)
-    gstname = models.CharField(verbose_name="الاسم", max_length=255, null=True, blank=True)
-    gstname = models.CharField(verbose_name="العمر", max_length=255, null=True, blank=True)
-    gstname = models.CharField(verbose_name="المنطقة", max_length=255, null=True, blank=True)
-    gstname = models.CharField(verbose_name="المستوى التعليمي", max_length=255, null=True, blank=True)
-    gstname = models.CharField(verbose_name="الهاتف/النقال", max_length=255, null=True, blank=True)
-    gstname = models.CharField(verbose_name="البريد الإلكتروني", max_length=255, null=True, blank=True)
+    mid = models.ForeignKey(MainSr, on_delete=models.CASCADE, default=1)
+    gstId=models.CharField(verbose_name="رقم المشارك", max_length=255, null=True, blank=True)
+    gs_name = models.CharField(verbose_name="الاسم", max_length=255, null=True, blank=True)
+    gst_age = models.CharField(verbose_name="العمر", max_length=255, null=True, blank=True)
+    gst_area = models.CharField(verbose_name="المنطقة", max_length=255, null=True, blank=True)
+    gst_deu = models.CharField(verbose_name="المستوى التعليمي", max_length=255, null=True, blank=True)
+    gst_mobile = models.CharField(verbose_name="الهاتف/النقال", max_length=255, null=True, blank=True)
+    gst_email = models.CharField(verbose_name="البريد الإلكتروني", max_length=255, null=True, blank=True)
 
 
 class ServiceProvider(models.Model):

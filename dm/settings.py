@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'survey',
     'crispy_forms',
     'sr_user',
+    'widget_tweaks',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -42,11 +42,9 @@ class Main_Sr_Form(forms.ModelForm):
     class Meta:
         model = MainSr
         fields = [
-            'sr_ser',
-            'cho_1',
-            'cho_2',
-            'cho_3',
-            'cho_4',
+            'sr_org',
+            'sr_loc',
+            'sr_desc',
         ]
 
 
@@ -65,6 +63,10 @@ class Main_Sr2_Form(forms.ModelForm):
         #     'cho_1'
         # }
         fields = [
+            'mid',
+            'gstId',
+            'sr_order',
+            'sr_status',
             'sr_ser1',
             'cho1_1',
             'cho1_2',
@@ -174,6 +176,8 @@ class Main_Sr2_Form(forms.ModelForm):
             'gst_comm',
         ]
         widgets ={
+            'mid':forms.HiddenInput(),
+            'gstId':forms.HiddenInput(),
             'sr_ser1':forms.TextInput(attrs={'readonly': 'readonly','class': 'form-control','dir':'rtl'}),
             'sr_ser2':forms.TextInput(attrs={'readonly': 'readonly','class': 'form-control','dir':'rtl'}),
             'sr_ser3':forms.TextInput(attrs={'readonly': 'readonly','class': 'form-control','dir':'rtl'}),

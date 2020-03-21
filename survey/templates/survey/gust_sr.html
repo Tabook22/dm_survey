@@ -3,6 +3,7 @@
 {% crispy form form.helper %}
 {% block content %}
 {% load static %}
+{% load widget_tweaks %}
 <style>
   .tdr{
     padding-right:1.2rem;
@@ -21,7 +22,14 @@
   </div>
   <form method="post" action="/survey/gust_sr/">
     {% csrf_token %}
+    <!-- {{form.mid}}<br>
+    {{form.gstId}} -->
+    <!-- <input type="hidden" name="office_id" value="{{ office.id }}"> -->
+    <!-- {% render_field form.gstId class="form-control" %} -->
+    {% render_field form.gstId class="form-control form-control-sm" placeholder=form.gstId.label value=srgstId %}
+    {% render_field form.mid class="form-control form-control-sm" placeholder=form.id.label value=mid %}
     <table class="table table-bordered table-hover" style="text-align:rtl;background-color:#fff;">
+    
       <thead>
         <tr class="">
         <th class="tdr">نوع الخدمة المقدمة</th>

@@ -74,14 +74,18 @@ def gust_sr(request):
         pass
 
     else:
+        #here we are trying to generate a random gust id to put it inside th survery because each gust must have a gust id to participate in the survey
         #generate a random gust numbers based on current time, to be used as gust id  
         dateTimeObj=datetime.now()
-        timestampStr = dateTimeObj.strftime("%d%m%Y%H%M%S%f)")
+        timestampStr = dateTimeObj.strftime("%d%m%Y%H%M%S%f")
         #ctm=datetime.datetime.now().time()
         gstId=timestampStr
-        print("=========================={}".format(gstId))
+
+        #here i want to get the id of the active suvery from MainSr model
+        getActSr=MainSr.objects.get(sr_status=True)
         context = {'form': form,
-                    'gstId':gstId}
+                    'srgstId':gstId,
+                    'mid':getActSr.id}
     
     return render(request, "survey/gust_sr.html", context)
 
