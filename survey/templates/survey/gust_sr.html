@@ -12,7 +12,7 @@
 <link href="{% static 'survey/css/add_form.css' %}" rel="stylesheet">
 <div class="form-wrapper">
   <div
-    style="display:flex; flex-direction:row; font-weight:bold;font-size:1.2rem;text-align:right;padding:20px;">
+    style="font-weight:bold;font-size:1.2rem;text-align:right;padding:20px;margin-top:100px; background-color:#fff;">
     <p>
       أستمارة المسح الميداني</br>
 
@@ -21,7 +21,7 @@
   </div>
   <form method="post" action="/survey/gust_sr/">
     {% csrf_token %}
-    <table class="table table-bordered table-hover" style="text-align:rtl;">
+    <table class="table table-bordered table-hover" style="text-align:rtl;background-color:#fff;">
       <thead>
         <tr class="">
         <th class="tdr">نوع الخدمة المقدمة</th>
