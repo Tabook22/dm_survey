@@ -6,6 +6,14 @@
 {% load widget_tweaks %}
 <style>
   .tdr{
+    min-width:6.5rem;
+    padding-right:1.2rem;
+    text-align:right;
+  }
+  .tdr1{
+
+
+    min-width:30rem;
     padding-right:1.2rem;
     text-align:right;
   }
@@ -32,171 +40,38 @@
     
       <thead>
         <tr class="">
+        <th>الرقم</th>
         <th class="tdr">نوع الخدمة المقدمة</th>
-        <th class="tdr">{{form.cho1_1.help_text}}</th>
-        <th class="tdr">{{form.cho1_2.help_text}}</th>
-        <th class="tdr">{{form.cho1_3.help_text}}</th>
-        <th class="tdr">{{form.cho1_4.help_text}}</th></tr>
+        <th class="tdr">مرضي</th>
+        <th class="tdr">مرضي نوعاً ما</th>
+        <th class="tdr">غير مرضي</th>
+        <th class="tdr">لا أعلم</th></tr>
       </thead>
       <tbody>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser1}}</td>
-          <td class="tdr">{{form.cho1_1}}</td>
-          <td class="tdr">{{form.cho1_2}}</td>
-          <td class="tdr">{{form.cho1_3}}</td>
-          <td class="tdr">{{form.cho1_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser2}}</td>
-          <td class="tdr">{{form.cho2_1}}</td>
-          <td class="tdr">{{form.cho2_2}}</td>
-          <td class="tdr">{{form.cho2_3}}</td>
-          <td class="tdr">{{form.cho2_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser3}}</td>
-          <td class="tdr">{{form.cho3_1}}</td>
-          <td class="tdr">{{form.cho3_2}}</td>
-          <td class="tdr">{{form.cho3_3}}</td>
-          <td class="tdr">{{form.cho3_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser4}}</td>
-          <td class="tdr">{{form.cho4_1}}</td>
-          <td class="tdr">{{form.cho4_2}}</td>
-          <td class="tdr">{{form.cho4_3}}</td>
-          <td class="tdr">{{form.cho4_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser5}}</td>
-          <td class="tdr">{{form.cho5_1}}</td>
-          <td class="tdr">{{form.cho5_2}}</td>
-          <td class="tdr">{{form.cho5_3}}</td>
-          <td class="tdr">{{form.cho5_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser6}}</td>
-          <td class="tdr">{{form.cho6_1}}</td>
-          <td class="tdr">{{form.cho6_2}}</td>
-          <td class="tdr">{{form.cho6_3}}</td>
-          <td class="tdr">{{form.cho6_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser7}}</td>
-          <td class="tdr">{{form.cho7_1}}</td>
-          <td class="tdr">{{form.cho7_2}}</td>
-          <td class="tdr">{{form.cho7_3}}</td>
-          <td class="tdr">{{form.cho7_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser8}}</td>
-          <td class="tdr">{{form.cho8_1}}</td>
-          <td class="tdr">{{form.cho8_2}}</td>
-          <td class="tdr">{{form.cho8_3}}</td>
-          <td class="tdr">{{form.cho8_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser9}}</td>
-          <td class="tdr">{{form.cho9_1}}</td>
-          <td class="tdr">{{form.cho9_2}}</td>
-          <td class="tdr">{{form.cho9_3}}</td>
-          <td class="tdr">{{form.cho9_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser10}}</td>
-          <td class="tdr">{{form.cho10_1}}</td>
-          <td class="tdr">{{form.cho10_2}}</td>
-          <td class="tdr">{{form.cho10_3}}</td>
-          <td class="tdr">{{form.cho10_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser11}}</td>
-          <td class="tdr">{{form.cho11_1}}</td>
-          <td class="tdr">{{form.cho11_2}}</td>
-          <td class="tdr">{{form.cho11_3}}</td>
-          <td class="tdr">{{form.cho11_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser12}}</td>
-          <td class="tdr">{{form.cho12_1}}</td>
-          <td class="tdr">{{form.cho12_2}}</td>
-          <td class="tdr">{{form.cho12_3}}</td>
-          <td class="tdr">{{form.cho12_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser13}}</td>
-          <td class="tdr">{{form.cho13_1}}</td>
-          <td class="tdr">{{form.cho13_2}}</td>
-          <td class="tdr">{{form.cho13_3}}</td>
-          <td class="tdr">{{form.cho13_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser14}}</td>
-          <td class="tdr">{{form.cho14_1}}</td>
-          <td class="tdr">{{form.cho14_2}}</td>
-          <td class="tdr">{{form.cho14_3}}</td>
-          <td class="tdr">{{form.cho14_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser15}}</td>
-          <td class="tdr">{{form.cho15_1}}</td>
-          <td class="tdr">{{form.cho15_2}}</td>
-          <td class="tdr">{{form.cho15_3}}</td>
-          <td class="tdr">{{form.cho15_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser16}}</td>
-          <td class="tdr">{{form.cho16_1}}</td>
-          <td class="tdr">{{form.cho16_2}}</td>
-          <td class="tdr">{{form.cho16_3}}</td>
-          <td class="tdr">{{form.cho16_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser17}}</td>
-          <td class="tdr">{{form.cho17_1}}</td>
-          <td class="tdr">{{form.cho17_2}}</td>
-          <td class="tdr">{{form.cho17_3}}</td>
-          <td class="tdr">{{form.cho17_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser18}}</td>
-          <td class="tdr">{{form.cho18_1}}</td>
-          <td class="tdr">{{form.cho18_2}}</td>
-          <td class="tdr">{{form.cho18_3}}</td>
-          <td class="tdr">{{form.cho18_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser19}}</td>
-          <td class="tdr">{{form.cho19_1}}</td>
-          <td class="tdr">{{form.cho19_2}}</td>
-          <td class="tdr">{{form.cho19_3}}</td>
-          <td class="tdr">{{form.cho19_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser20}}</td>
-          <td class="tdr">{{form.cho20_1}}</td>
-          <td class="tdr">{{form.cho20_2}}</td>
-          <td class="tdr">{{form.cho20_3}}</td>
-          <td class="tdr">{{form.cho20_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser21}}</td>
-          <td class="tdr">{{form.cho21_1}}</td>
-          <td class="tdr">{{form.cho21_2}}</td>
-          <td class="tdr">{{form.cho21_3}}</td>
-          <td class="tdr">{{form.cho21_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.sr_ser22}}</td>
-          <td class="tdr">{{form.cho22_1}}</td>
-          <td class="tdr">{{form.cho22_2}}</td>
-          <td class="tdr">{{form.cho22_3}}</td>
-          <td class="tdr">{{form.cho22_4}}</td>
-        </tr>
-        <tr class="">
-          <td class="tdr">{{form.gst_comm}}</td>
+          {% for key,value in my_dict2.items %}
+            <tr class="">
+              <td style="max-width:1rem !important;"> {{forloop.counter}}</td>
+              <td>
+               <input class="tdr1" readonly type="text" id="{{forloop.counter}}" name="sr_ser{{forloop.counter}}" value="{{value}}">
+              </td>
+              <td class="tdr"><input type="radio" name="cho{{forloop.counter}}_1"></td>
+              <td class="tdr"><input type="radio" name="cho{{forloop.counter}}_1"></td>
+              <td class="tdr"><input type="radio" name="cho{{forloop.counter}}_1"></td>
+              <td class="tdr"><input type="radio" name="cho{{forloop.counter}}_1"></td>
+            </tr>
+           
+          {% endfor %} 
+          <tr>
+            <td class="tdr"  colspan=6>
+              <input class="tdr1" readonly type="text" name="sr_ser22" value="ماهي مقرحاتك لتطوير خدمات البلدية التي تقدمها للمواطن؟">
+            </td>
+          </tr>
+        <tr class="">          
+          <td class="tdr"  colspan=6>{{form.gst_comm}}</td>
+
         </tr>
         <tr>
+
           <td class="tdr"><input type="submit" class="btn btn-dark" name="submit" value="إضافة المسح الميداني" /></td>
         </tr>
       </tbody>
