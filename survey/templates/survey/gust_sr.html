@@ -28,7 +28,7 @@
       من خلال هذة الإستمارة يمكنك تسجيل الأسئلة الخاصة بالإستبيان
     </p>
   </div>
-  <form method="post" action="/survey/gust_sr/">
+  <form id="form" method="post" action="/survey/gust_sr/">
     {% csrf_token %}
     <!-- {{form.mid}}<br>
     {{form.gstId}} -->
@@ -54,10 +54,10 @@
               <td>
                <input class="tdr1" readonly type="text" id="{{forloop.counter}}" name="sr_ser{{forloop.counter}}" value="{{value}}">
               </td>
-              <td class="tdr"><input type="radio" name="cho{{forloop.counter}}_1"></td>
-              <td class="tdr"><input type="radio" name="cho{{forloop.counter}}_1"></td>
-              <td class="tdr"><input type="radio" name="cho{{forloop.counter}}_1"></td>
-              <td class="tdr"><input type="radio" name="cho{{forloop.counter}}_1"></td>
+              <td class="tdr"><input type="radio" value="1" name="cho{{forloop.counter}}_1">مرضي</td>
+              <td class="tdr"><input type="radio" value="2" name="cho{{forloop.counter}}_1">مرضي نوعا ما</td>
+              <td class="tdr"><input type="radio" value="3" name="cho{{forloop.counter}}_1">غير مرضي</td>
+              <td class="tdr"><input type="radio" value="4" name="cho{{forloop.counter}}_1">لا أعلم</td>
             </tr>
            
           {% endfor %} 
@@ -78,5 +78,53 @@
 
     </table>
   </form>
+
+  <script type="text/javascript">
+
+
+    //document.getElementById('form1').addEventListener('submit', function(evt){
+      //evt.preventDefault();
+      //document.getElementById('donate').style.display = 'none';
+     // document.getElementById('topMessage').style.display = 'none';
+  //})
+
+
+
+  document.getElementById('form').addEventListener('submit', function(evt){
+    alert("In the name of god most merci most mercifull");
+    //var radios=document.getElementsByName(rName);
+        var radios=document.querySelectorAll('input[type="radio"]')
+        //var radioButtons = document.getElementsByName("age");
+        for(var i = 0; i < radios.length; i++)
+        {
+            if(radios[i].checked == false)
+            {
+              var x = document.querySelect(radios[i]).parentElement.nodeName;
+                //alert("You have selected"+radios[i].value);
+                alert(x);
+            }
+        }
+    })
+
+    //function logSubmit(event) {
+      //var radioButtons = document.getElementsByName("age");
+        //for(var i = 0; i < radioButtons.length; i++)
+        //{
+          //  if(radioButtons[i].checked == true)
+          //  {
+          //      alert("You have selected"+radioButtons[i].value)
+            //}
+       // }
+
+
+      //log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
+      //event.preventDefault();
+    //}
+    
+   // const form = document.getElementById('form');
+   // const log = document.getElementById('log');
+    //form.addEventListener('submit', logSubmit);
+
+    </script>
 </div>
 {% endblock content %}
