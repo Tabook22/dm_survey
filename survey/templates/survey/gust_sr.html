@@ -17,6 +17,9 @@
     padding-right:1.2rem;
     text-align:right;
   }
+
+
+  
 </style>
 <link href="{% static 'survey/css/add_form.css' %}" rel="stylesheet">
 <div class="form-wrapper">
@@ -55,9 +58,9 @@
                <input class="tdr1" readonly type="text" id="{{forloop.counter}}" name="sr_ser{{forloop.counter}}" value="{{value}}">
               </td>
               <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="1" name="cho{{forloop.counter}}_1">مرضي</td>
-              <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="2" name="cho{{forloop.counter}}_1">مرضي نوعا ما</td>
-              <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="3" name="cho{{forloop.counter}}_1">غير مرضي</td>
-              <td class="tdr rdo{{forloop.counter}}_1" ><input type="radio" value="4" name="cho{{forloop.counter}}_1">لا أعلم</td>
+              <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="2" name="cho{{forloop.counter}}_2">مرضي نوعا ما</td>
+              <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="3" name="cho{{forloop.counter}}_3">غير مرضي</td>
+              <td class="tdr rdo{{forloop.counter}}_1" ><input type="radio" value="4" name="cho{{forloop.counter}}_4">لا أعلم</td>
             </tr>
            
           {% endfor %} 
@@ -94,18 +97,20 @@ function myValidation()
     for(var i = 0; i < radios.length; i++)
         {
             //check if the radio is not checked
-            if(radios[i].checked ==true)
+            if(radios[i].checked ==false)
             {
-              alert("In the name of god most merci most mercifull");
-              //const dd='.rdo'+[i+1]+'_1';
-              //alert(dd);
-              var container = document.querySelector("#r-table");
-              var matches = container.querySelectorAll("tr");
-              matches.style.backgroundColor = "green";
-             //var x = document.querySelect("+radios[i]+").parentElement.nodeName;
-                //alert("You have selected"+radios[i].value);
-              return false
+              //alert("In the name of god most merci most mercifull");
+              const rdoname=radios[i].name
+              const firstItem = document.querySelector("tr.tr-rdo input[name='"+rdoname+"']")
+              //alert(firstItem);
+	            const list = firstItem.parentElement
+              list.style.backgroundColor="blue";
+              //return false #to stop the execuaiton of the rest of the code
             }
+            //else;
+            //{
+             // alert("please select");
+            //}
         }
 }
   //here we added an evenlistener to the form to lisent for any submit activities
