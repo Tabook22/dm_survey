@@ -52,7 +52,7 @@
       </thead>
       <tbody>
           {% for key,value in my_dict2.items %}
-            <tr class="tr-rdo">
+            <tr id="rw{{forloop.counter}}" class="tr-rdo">
               <td style="max-width:1rem !important;"> {{forloop.counter}}</td>
               <td>
                <input class="tdr1" readonly type="text" id="{{forloop.counter}}" name="sr_ser{{forloop.counter}}" value="{{value}}">
@@ -93,25 +93,27 @@
 
 function myValidation()
 {
-    var radios=document.querySelectorAll('input[type="radio"]')
-    for(var i = 0; i < radios.length; i++)
-        {
-            //check if the radio is not checked
-            if(radios[i].checked ==false)
-            {
-              //alert("In the name of god most merci most mercifull");
-              const rdoname=radios[i].name
-              const firstItem = document.querySelector("tr.tr-rdo input[name='"+rdoname+"']")
-              //alert(firstItem);
-	            const list = firstItem.parentElement
-              list.style.backgroundColor="blue";
-              //return false #to stop the execuaiton of the rest of the code
-            }
-            //else;
-            //{
-             // alert("please select");
-            //}
-        }
+  rdvalue=[];
+  var inputs = document.getElementById("form").elements;
+    console.log(inputs);
+  // Iterate over the form controls
+  for (i = 0; i < inputs.length; i++) {
+    if (inputs[i].nodeName === "INPUT" && inputs[i].type === "radio") {
+      // Update text input
+      rdvalue.push(inputs[i].value);
+      console.log(rdvalue);
+      //getting the parent row
+      var rowid="rw"+(i+1);
+      const parent_row = document.querySelector("#"+rowid)
+      //get elements in parent_row
+      
+      console.log(parent_row);
+      const list = parent_row.parentElement
+      list.style.backgroundColor="blue";
+      return false //to stop the execuaiton of the rest of the code
+
+    }
+  }  
 }
   //here we added an evenlistener to the form to lisent for any submit activities
   //document.getElementById('form').addEventListener('submit', function(evt){
