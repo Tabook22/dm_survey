@@ -28,7 +28,7 @@
       من خلال هذة الإستمارة يمكنك تسجيل الأسئلة الخاصة بالإستبيان
     </p>
   </div>
-  <form id="form" method="post" action="/survey/gust_sr/">
+  <form onsubmit = "event.preventDefault(); myValidation();" id="form" method="post" action="/survey/gust_sr/">
     {% csrf_token %}
     <!-- {{form.mid}}<br>
     {{form.gstId}} -->
@@ -36,7 +36,7 @@
     <!-- {% render_field form.gstId class="form-control" %} -->
     {% render_field form.gstId class="form-control form-control-sm" placeholder=form.gstId.label value=srgstId %}
     {% render_field form.mid class="form-control form-control-sm" placeholder=form.id.label value=mid %}
-    <table class="table table-bordered table-hover" style="text-align:rtl;background-color:#fff;">
+    <table id="sr-table" class="table table-bordered table-hover" style="text-align:rtl;background-color:#fff;">
     
       <thead>
         <tr class="">
@@ -49,15 +49,15 @@
       </thead>
       <tbody>
           {% for key,value in my_dict2.items %}
-            <tr class="">
+            <tr class="tr-rdo">
               <td style="max-width:1rem !important;"> {{forloop.counter}}</td>
               <td>
                <input class="tdr1" readonly type="text" id="{{forloop.counter}}" name="sr_ser{{forloop.counter}}" value="{{value}}">
               </td>
-              <td class="tdr"><input type="radio" value="1" name="cho{{forloop.counter}}_1">مرضي</td>
-              <td class="tdr"><input type="radio" value="2" name="cho{{forloop.counter}}_1">مرضي نوعا ما</td>
-              <td class="tdr"><input type="radio" value="3" name="cho{{forloop.counter}}_1">غير مرضي</td>
-              <td class="tdr"><input type="radio" value="4" name="cho{{forloop.counter}}_1">لا أعلم</td>
+              <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="1" name="cho{{forloop.counter}}_1">مرضي</td>
+              <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="2" name="cho{{forloop.counter}}_1">مرضي نوعا ما</td>
+              <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="3" name="cho{{forloop.counter}}_1">غير مرضي</td>
+              <td class="tdr rdo{{forloop.counter}}_1" ><input type="radio" value="4" name="cho{{forloop.counter}}_1">لا أعلم</td>
             </tr>
            
           {% endfor %} 
@@ -88,23 +88,53 @@
      // document.getElementById('topMessage').style.display = 'none';
   //})
 
-
-
-  document.getElementById('form').addEventListener('submit', function(evt){
-    alert("In the name of god most merci most mercifull");
-    //var radios=document.getElementsByName(rName);
-        var radios=document.querySelectorAll('input[type="radio"]')
-        //var radioButtons = document.getElementsByName("age");
-        for(var i = 0; i < radios.length; i++)
+function myValidation()
+{
+    var radios=document.querySelectorAll('input[type="radio"]')
+    for(var i = 0; i < radios.length; i++)
         {
-            if(radios[i].checked == false)
+            //check if the radio is not checked
+            if(radios[i].checked ==true)
             {
-              var x = document.querySelect(radios[i]).parentElement.nodeName;
+              alert("In the name of god most merci most mercifull");
+              //const dd='.rdo'+[i+1]+'_1';
+              //alert(dd);
+              var container = document.querySelector("#r-table");
+              var matches = container.querySelectorAll("tr");
+              matches.style.backgroundColor = "green";
+             //var x = document.querySelect("+radios[i]+").parentElement.nodeName;
                 //alert("You have selected"+radios[i].value);
-                alert(x);
+              return false
             }
         }
-    })
+}
+  //here we added an evenlistener to the form to lisent for any submit activities
+  //document.getElementById('form').addEventListener('submit', function(evt){
+   // alert("Thank God");
+    
+    //var radios=document.getElementsByName(rName);
+        //get an array of the radio button
+        //var radios=document.querySelectorAll('input[type="radio"]')
+        //var radios=document.querySelectorAll('.trr-do')
+        //var radioButtons = document.getElementsByName("age");
+        //loop through the arrays
+       // for(var i = 0; i < radios.length; i++)
+        //{
+            //check if the radio is not checked
+          //  if(radios[i].checked ==true)
+           // {
+           //   alert("In the name of god most merci most mercifull");
+              //const dd='.rdo'+[i+1]+'_1';
+              //alert(dd);
+           //   var container = document.querySelector("#r-table");
+            //  var matches = container.querySelectorAll("tr> td");
+            //  matches.style.backgroundColor = "green";
+             //var x = document.querySelect("+radios[i]+").parentElement.nodeName;
+                //alert("You have selected"+radios[i].value);
+            //  event.preventDefault()
+            //}
+      //  }
+    //})
 
     //function logSubmit(event) {
       //var radioButtons = document.getElementsByName("age");
