@@ -96,27 +96,37 @@
     //})
 
     function myValidation() {
+      val=4;
       var inputs = document.getElementById("form").elements;
       //console.log(inputs);
 
-      //Iterate over the rows in the table
+      //get the table 
       var table = document.getElementById("sr-table");
+      //get the list of rows
       var rows = table.getElementsByTagName("tr")
+      //Iterate over the rows in the table
       for (var i = 0; i < rows.length; i++) {
-        //get any input element in the row
+        //get any input"radio" element in the row
         var ele = rows[i].querySelectorAll('input[type="radio"]');
-       // console.log(ele.length);
+        //var ele = rows[i].querySelectorAll('input[type="radio"]:checked').length === 0;
+       //console.log(ele.length);
+       //iterate over the radio buttons in each row
         for (j = 0; j < ele.length; j++) {
-          //check if the type of the input is radio
-          //if (ele[j].type = "radio") {
             //check if the radio button is checked
             if (ele[j].checked){
+              val=val-1;
+              console.log(val);
               //document.getElementById("result").innerHTML 
-             //rows[i].style.backgroundColor="orange";
+             rows[i].style.backgroundColor="orange";
               console.log(ele[j].name + " Value: "+ ele[j].value);
             // += ele[j].name + " Value: " 
             //+ ele[j].value + "<br>"; 
+            }else if(val==4){
+              console.log(val);
+              rows[i].style.backgroundColor="red";
+              console.log(ele[j].name + " Value: "+ ele[j].value);
             }
+            val=4
           //}
         }
       }
