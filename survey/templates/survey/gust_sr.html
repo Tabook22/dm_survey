@@ -5,33 +5,30 @@
 {% load static %}
 {% load widget_tweaks %}
 <style>
-  .tdr{
-    min-width:6.5rem;
-    padding-right:1.2rem;
-    text-align:right;
-  }
-  .tdr1{
-
-
-    min-width:30rem;
-    padding-right:1.2rem;
-    text-align:right;
+  .tdr {
+    min-width: 6.5rem;
+    padding-right: 1.2rem;
+    text-align: right;
   }
 
+  .tdr1 {
 
-  
+
+    min-width: 30rem;
+    padding-right: 1.2rem;
+    text-align: right;
+  }
 </style>
 <link href="{% static 'survey/css/add_form.css' %}" rel="stylesheet">
 <div class="form-wrapper">
-  <div
-    style="font-weight:bold;font-size:1.2rem;text-align:right;padding:20px;margin-top:100px; background-color:#fff;">
+  <div style="font-weight:bold;font-size:1.2rem;text-align:right;padding:20px;margin-top:100px; background-color:#fff;">
     <p>
       أستمارة المسح الميداني</br>
 
       من خلال هذة الإستمارة يمكنك تسجيل الأسئلة الخاصة بالإستبيان
     </p>
   </div>
-  <form onsubmit = "event.preventDefault(); myValidation();" id="form" method="post" action="/survey/gust_sr/">
+  <form onsubmit="event.preventDefault(); myValidation();" id="form" method="post" action="/survey/gust_sr/">
     {% csrf_token %}
     <!-- {{form.mid}}<br>
     {{form.gstId}} -->
@@ -40,37 +37,44 @@
     {% render_field form.gstId class="form-control form-control-sm" placeholder=form.gstId.label value=srgstId %}
     {% render_field form.mid class="form-control form-control-sm" placeholder=form.id.label value=mid %}
     <table id="sr-table" class="table table-bordered table-hover" style="text-align:rtl;background-color:#fff;">
-    
+
       <thead>
         <tr class="">
-        <th>الرقم</th>
-        <th class="tdr">نوع الخدمة المقدمة</th>
-        <th class="tdr">مرضي</th>
-        <th class="tdr">مرضي نوعاً ما</th>
-        <th class="tdr">غير مرضي</th>
-        <th class="tdr">لا أعلم</th></tr>
+          <th>الرقم</th>
+          <th class="tdr">نوع الخدمة المقدمة</th>
+          <th class="tdr">مرضي</th>
+          <th class="tdr">مرضي نوعاً ما</th>
+          <th class="tdr">غير مرضي</th>
+          <th class="tdr">لا أعلم</th>
+        </tr>
       </thead>
       <tbody>
-          {% for key,value in my_dict2.items %}
-            <tr id="rw{{forloop.counter}}" class="tr-rdo">
-              <td style="max-width:1rem !important;"> {{forloop.counter}}</td>
-              <td>
-               <input class="tdr1" readonly type="text" id="{{forloop.counter}}" name="sr_ser{{forloop.counter}}" value="{{value}}">
-              </td>
-              <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="1" name="cho{{forloop.counter}}_1">مرضي</td>
-              <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="2" name="cho{{forloop.counter}}_1">مرضي نوعا ما</td>
-              <td  class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="3" name="cho{{forloop.counter}}_1">غير مرضي</td>
-              <td class="tdr rdo{{forloop.counter}}_1" ><input type="radio" value="4" name="cho{{forloop.counter}}_1">لا أعلم</td>
-            </tr>
-           
-          {% endfor %} 
-          <tr>
-            <td class="tdr"  colspan=6>
-              <input class="tdr1" readonly type="text" name="sr_ser22" value="ماهي مقرحاتك لتطوير خدمات البلدية التي تقدمها للمواطن؟">
-            </td>
-          </tr>
-        <tr class="">          
-          <td class="tdr"  colspan=6>{{form.gst_comm}}</td>
+        {% for key,value in my_dict2.items %}
+        <tr id="rw{{forloop.counter}}" class="tr-rdo">
+          <td style="max-width:1rem !important;"> {{forloop.counter}}</td>
+          <td>
+            <input class="tdr1" readonly type="text" id="{{forloop.counter}}" name="sr_ser{{forloop.counter}}"
+              value="{{value}}">
+          </td>
+          <td class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="1" name="cho{{forloop.counter}}_1">مرضي
+          </td>
+          <td class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="2" name="cho{{forloop.counter}}_1">مرضي
+            نوعا ما</td>
+          <td class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="3" name="cho{{forloop.counter}}_1">غير
+            مرضي</td>
+          <td class="tdr rdo{{forloop.counter}}_1"><input type="radio" value="4" name="cho{{forloop.counter}}_1">لا أعلم
+          </td>
+        </tr>
+
+        {% endfor %}
+        <tr>
+          <td class="tdr" colspan=6>
+            <input class="tdr1" readonly type="text" name="sr_ser22"
+              value="ماهي مقرحاتك لتطوير خدمات البلدية التي تقدمها للمواطن؟">
+          </td>
+        </tr>
+        <tr class="">
+          <td class="tdr" colspan=6>{{form.gst_comm}}</td>
 
         </tr>
         <tr>
@@ -86,82 +90,37 @@
 
 
     //document.getElementById('form1').addEventListener('submit', function(evt){
-      //evt.preventDefault();
-      //document.getElementById('donate').style.display = 'none';
-     // document.getElementById('topMessage').style.display = 'none';
-  //})
-
-function myValidation()
-{
-  rdvalue=[];
-  var inputs = document.getElementById("form").elements;
-    console.log(inputs);
-  // Iterate over the form controls
-  for (i = 0; i < inputs.length; i++) {
-    if (inputs[i].nodeName === "INPUT" && inputs[i].type === "radio") {
-      // Update text input
-      rdvalue.push(inputs[i].value);
-      console.log(rdvalue);
-      //getting the parent row
-      var rowid="rw"+(i+1);
-      const parent_row = document.querySelector("#"+rowid)
-      //get elements in parent_row
-      
-      console.log(parent_row);
-      const list = parent_row.parentElement
-      list.style.backgroundColor="blue";
-      return false //to stop the execuaiton of the rest of the code
-
-    }
-  }  
-}
-  //here we added an evenlistener to the form to lisent for any submit activities
-  //document.getElementById('form').addEventListener('submit', function(evt){
-   // alert("Thank God");
-    
-    //var radios=document.getElementsByName(rName);
-        //get an array of the radio button
-        //var radios=document.querySelectorAll('input[type="radio"]')
-        //var radios=document.querySelectorAll('.trr-do')
-        //var radioButtons = document.getElementsByName("age");
-        //loop through the arrays
-       // for(var i = 0; i < radios.length; i++)
-        //{
-            //check if the radio is not checked
-          //  if(radios[i].checked ==true)
-           // {
-           //   alert("In the name of god most merci most mercifull");
-              //const dd='.rdo'+[i+1]+'_1';
-              //alert(dd);
-           //   var container = document.querySelector("#r-table");
-            //  var matches = container.querySelectorAll("tr> td");
-            //  matches.style.backgroundColor = "green";
-             //var x = document.querySelect("+radios[i]+").parentElement.nodeName;
-                //alert("You have selected"+radios[i].value);
-            //  event.preventDefault()
-            //}
-      //  }
+    //evt.preventDefault();
+    //document.getElementById('donate').style.display = 'none';
+    // document.getElementById('topMessage').style.display = 'none';
     //})
 
-    //function logSubmit(event) {
-      //var radioButtons = document.getElementsByName("age");
-        //for(var i = 0; i < radioButtons.length; i++)
-        //{
-          //  if(radioButtons[i].checked == true)
-          //  {
-          //      alert("You have selected"+radioButtons[i].value)
-            //}
-       // }
+    function myValidation() {
+      var inputs = document.getElementById("form").elements;
+      //console.log(inputs);
 
-
-      //log.textContent = `Form Submitted! Time stamp: ${event.timeStamp}`;
-      //event.preventDefault();
-    //}
-    
-   // const form = document.getElementById('form');
-   // const log = document.getElementById('log');
-    //form.addEventListener('submit', logSubmit);
-
-    </script>
+      //Iterate over the rows in the table
+      var table = document.getElementById("sr-table");
+      var rows = table.getElementsByTagName("tr")
+      for (var i = 0; i < rows.length; i++) {
+        //get any input element in the row
+        var ele = rows[i].querySelectorAll('input[type="radio"]');
+       // console.log(ele.length);
+        for (j = 0; j < ele.length; j++) {
+          //check if the type of the input is radio
+          //if (ele[j].type = "radio") {
+            //check if the radio button is checked
+            if (ele[j].checked){
+              //document.getElementById("result").innerHTML 
+             //rows[i].style.backgroundColor="orange";
+              console.log(ele[j].name + " Value: "+ ele[j].value);
+            // += ele[j].name + " Value: " 
+            //+ ele[j].value + "<br>"; 
+            }
+          //}
+        }
+      }
+    }
+  </script>
 </div>
 {% endblock content %}
